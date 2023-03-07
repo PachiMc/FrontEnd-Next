@@ -1,9 +1,9 @@
 "use client";
-import context from "../../context/cart-context";
+import { context } from "../../context/cart-context";
 import { useContext } from "react";
 import ItemCart from "../../components/ItemCart";
-import CartProvider from "../../components/CartProvider";
-import itemType from "@/type/Item-type";
+import CartProvider from "../../components/GlobalProvider";
+import itemType from "@/model/Item-type";
 const CartTotal: React.FC = () => {
   const cartContext = useContext(context);
 

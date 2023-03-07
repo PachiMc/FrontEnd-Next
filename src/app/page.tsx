@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 
 import Item from "../components/Item";
-import itemType from "../type/Item-type";
+import itemType from "../model/Item-type";
 
 // DUMMY INFO
 const DUMMY_ITEMS: itemType = {

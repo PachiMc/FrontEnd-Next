@@ -1,6 +1,6 @@
 "use client";
-import context from "@/context/cart-context";
-import itemType from "@/type/Item-type";
+import { context } from "@/context/cart-context";
+import itemType from "@/model/Item-type";
 import { useContext } from "react";
 
 const ItemCart: React.FC<itemType> = (item) => {

@@ -1,7 +1,7 @@
 import "./globals.css";
-import CartProvider from "../components/CartProvider";
+import GlobalProvider from "../components/GlobalProvider";
 import Footer from "../components/Footer";
-
+import Header from "../components/Header";
 export const metadata = {
   title: "NextJs Portfolio",
   description: "FrontEnd Developer Portfolio",
@@ -15,7 +15,10 @@ export default function RootLayout({
   return (
     <html data-theme="dark" lang="en">
       <body className="relative min-h-screen">
-        <CartProvider>{children}</CartProvider>
+        <GlobalProvider>
+          <Header />
+          {children}
+        </GlobalProvider>
         <Footer />
       </body>
     </html>

@@ -1,7 +1,7 @@
 "use client";
 import { useContext } from "react";
-import context from "../context/cart-context";
-import itemType from "../type/Item-type";
+import { context } from "../context/cart-context";
+import itemType from "../model/Item-type";
 //////////// env
 const admin = false;
 
