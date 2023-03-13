@@ -4,5 +4,6 @@ type itemType = {
   description: string;
   price: number;
   quantity: number;
+  stock: number;
 };
 export default itemType;

@@ -1,7 +1,7 @@
 "use client";
 import { context } from "../../context/cart-context";
 import { useContext } from "react";
-import ItemCart from "../../components/ItemCart";
+import ItemCart from "../../components/Cart/ItemCart";
 import CartProvider from "../../components/GlobalProvider";
 import itemType from "@/model/Item-type";
 const CartTotal: React.FC = () => {
@@ -19,6 +19,7 @@ const CartTotal: React.FC = () => {
             price={elem.price}
             quantity={elem.quantity}
             key={elem.id}
+            stock={elem.stock}
           />
         ))}
 

@@ -1,8 +1,9 @@
 "use client";
 import { useContext } from "react";
-import { context } from "../context/cart-context";
-import itemType from "../model/Item-type";
+import { context } from "../../context/cart-context";
+import itemType from "../../model/Item-type";
 import Link from "next/link";
+
 const Cart: React.FC = () => {
   const cartContext = useContext(context);
   return (
@@ -42,7 +43,7 @@ const Cart: React.FC = () => {
               (accumulator: number, currentValue: itemType) =>
                 accumulator + currentValue.quantity,
               0
-            )}{" "}
+            )}
             Items
           </span>
           <span className="text-info">

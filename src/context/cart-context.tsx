@@ -1,7 +1,8 @@
 "use client";
-import userType from "@/model/User-type";
+
 import React, { useEffect, useState } from "react";
 import itemType from "../model/Item-type";
+
 export const context = React.createContext({
   cart: [] as itemType[],
   addProductToCart: function (item: itemType) {},
@@ -31,25 +32,28 @@ const CartProvider: React.FC<{
   const initialValueContext = {
     cart: cart,
     addProductToCart: function (item: itemType) {
-      let exist = this.cart.find((elem) => elem.id == item.id);
-      if (exist) {
-        exist.quantity += item.quantity;
-      }
       setCart((prev) => {
+        let exist = prev.find((elem) => elem.id == item.id);
         if (exist) {
-          return [...this.cart];
+          if (exist.quantity < item.stock) {
+            exist.quantity += item.quantity;
+          }
+          return [...prev];
         }
         return [...prev, { ...item }];
       });
     },
     removeProductFromCart: function (item: itemType) {
-      let exist = this.cart.find((elem) => elem.id == item.id);
-      if (exist && exist.quantity > 1) {
-        exist.quantity--;
-      } else if (exist) {
-        this.cart = this.cart.filter((elem) => elem.id != item.id);
-      }
-      setCart([...this.cart]);
+      setCart((prev) => {
+        let exist = prev.find((elem) => elem.id == item.id);
+        let filter: itemType[] = cart;
+        if (exist && exist.quantity > 1) {
+          exist.quantity--;
+        } else if (exist) {
+          filter = prev.filter((elem) => elem.id != item.id);
+        }
+        return [...filter];
+      });
     },
   };
 

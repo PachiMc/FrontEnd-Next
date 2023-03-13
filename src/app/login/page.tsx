@@ -1,32 +1,29 @@
 "use client";
 import React, { useContext, useRef } from "react";
 import Link from "next/link";
-import userType from "@/model/User-type";
 import { contextUser } from "@/context/user-context";
 import Swal from "sweetalert2";
 
-const Register: React.FC = () => {
+const Login: React.FC = () => {
   const userContext = useContext(contextUser);
   const nameInput = useRef<HTMLInputElement>(null);
   const passwordInput = useRef<HTMLInputElement>(null);
-  const checkInput = useRef<HTMLInputElement>(null);
-
-  async function auth(user: userType) {
-    const res = await fetch(process.env.NEXT_PUBLIC_API + "User/SignUp", {
+  async function signIn(name: string, password: string) {
+    const res = await fetch(process.env.NEXT_PUBLIC_API + "User/SignIn", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
       body: JSON.stringify({
-        password: user.password,
-        name: user.name,
-        admin: user.admin,
+        name: name,
+        password: password,
       }),
     });
     if (!res.ok) {
       throw new Error("Failed to fetch data");
     }
+
     const json = await res.json();
     if (json.success) {
       userContext.fetchUser();
@@ -60,28 +57,21 @@ const Register: React.FC = () => {
             placeholder="Password..."
             className="input input-bordered w-full max-w-xs"
           />
-          <label className="my-5 label justify-start  cursor-pointer">
-            <input ref={checkInput} type="checkbox" className="mr-5 checkbox" />
-            <span className="label-text">Alow edit items (admin role)</span>
-          </label>
           <button
             onClick={() => {
-              auth({
-                name: nameInput.current ? nameInput.current.value : "",
-                password: passwordInput.current
-                  ? passwordInput.current.value
-                  : "",
-                admin: checkInput.current ? checkInput.current.checked : false,
-              });
+              signIn(
+                nameInput.current ? nameInput.current.value : "",
+                passwordInput.current ? passwordInput.current.value : ""
+              );
             }}
             className="btn btn-outline my-8 btn-accent"
           >
-            Register
+            Login
           </button>
-          <Link href="/login">Sign with your account here</Link>
+          <Link href="/register">Create an account here</Link>{" "}
         </>
       )}
     </div>
   );
 };
-export default Register;
+export default Login;

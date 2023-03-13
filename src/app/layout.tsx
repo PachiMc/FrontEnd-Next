@@ -1,7 +1,8 @@
 import "./globals.css";
 import GlobalProvider from "../components/GlobalProvider";
 import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Header from "../components/Header/Header";
+
 export const metadata = {
   title: "NextJs Portfolio",
   description: "FrontEnd Developer Portfolio",

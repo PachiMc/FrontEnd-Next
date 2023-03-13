@@ -5,6 +5,7 @@ import { useContext } from "react";
 
 const ItemCart: React.FC<itemType> = (item) => {
   const cartContext = useContext(context);
+
   return (
     <div className="m-5 p-6 flex flex-row place-content-between h-20 card bg-base-300 rounded-box place-items-center">
       {item.name}

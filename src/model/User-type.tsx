@@ -1,4 +1,6 @@
 type userType = {
-  username: string;
+  name: string;
+  password?: string;
+  admin: boolean;
 };
 export default userType;
