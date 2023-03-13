@@ -1,5 +1,5 @@
 "use client";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { context } from "../context/cart-context";
 import { contextUser } from "../context/user-context";
 import itemType from "../model/Item-type";

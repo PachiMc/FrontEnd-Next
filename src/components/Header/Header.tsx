@@ -7,7 +7,6 @@ import { useContext } from "react";
 
 const Home: React.FC = () => {
   const userContext = useContext(contextUser);
-  console.log(userContext.user?.name);
   const logout = () => {
     localStorage.clear();
     fetch(process.env.NEXT_PUBLIC_API + "User/Logout", {
@@ -26,9 +25,9 @@ const Home: React.FC = () => {
           Logout
         </button>
       ) : (
-        <button className="m-5 btn btn-active btn-primary">
-          <Link href="/login">Log in</Link>
-        </button>
+        <Link className="m-5 btn btn-active btn-primary" href="/login">
+          Log in
+        </Link>
       )}
       <div className="navbar bg-base-100">
         <div className="flex-1">
@@ -37,9 +36,9 @@ const Home: React.FC = () => {
           </Link>
         </div>
         {userContext.user?.admin && (
-          <button className="m-5 btn btn-active btn-success">
-            <Link href="/new">Add item</Link>
-          </button>
+          <Link className="m-5 btn btn-active btn-success" href="/new">
+            Add item
+          </Link>
         )}
         {userContext.user ? (
           <div className="justify-center gap-5">

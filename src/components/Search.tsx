@@ -7,7 +7,8 @@ const Search = ({ changeItems }: any) => {
     const timer = setTimeout(function () {
       fetch(
         process.env.NEXT_PUBLIC_API +
-          (search ? "Item/SearchItem/?query=" + search : "Item/Get")
+          (search ? "Item/SearchItem/?query=" + search : "Item/Get"),
+        { cache: "no-store" }
       )
         .then((response) => response.json())
         .then((json) => {

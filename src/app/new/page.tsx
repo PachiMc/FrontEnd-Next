@@ -29,7 +29,6 @@ async function addItem(
   } else {
     Swal.fire("Error", "item not added!", "error");
   }
-  //   document.cookie = "token=Bearer " + json.data;
   return json;
 }
 
